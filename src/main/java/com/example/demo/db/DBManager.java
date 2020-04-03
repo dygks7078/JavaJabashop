@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.vo.GoodsVo;
 import com.example.demo.vo.MemberVo;
+import com.example.demo.vo.OrderVo;
 
 public class DBManager {
 	private static SqlSessionFactory factory;
@@ -113,6 +114,29 @@ public class DBManager {
 		m = session.selectOne("member.getMember",id);
 		session.close();
 		return m;
+	}
+	
+	//show orderList
+	public static List<OrderVo> orderList(){
+		SqlSession session = factory.openSession();
+		List<OrderVo> list = session.selectList("order.orderList");
+		session.close();
+		return list;
+	}
+	
+	//order
+	public static int order(OrderVo o) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("order.insert", o);
+		int re1 = session.update("goods.orderGoods", o);
+		
+		if(re>0 && re1>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return (re+re1);
 	}
 	
 //	
