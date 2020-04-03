@@ -82,7 +82,6 @@ public class DBManager {
 		return re;
 	}
 	
-	
 	public static List<MemberVo> listAll(){
 		SqlSession session = factory.openSession();
 		List<MemberVo> list = session.selectList("member.selectAll");
