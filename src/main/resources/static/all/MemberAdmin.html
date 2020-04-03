@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="EUC-KR"> 
+<title>Insert title here</title> 
+<style type="text/css"> 
+    .active{ 
+        background: skyblue; 
+    } 
+
+</style> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+<script type="text/javascript"> 
+$(function(){ 
+
+    var arr; 
+    var inputArr = $("input[type=text]");    // 인풋타입 텍스트여서 넘버 사용하면 안나올거여 넘버인애들만 
+
+    $("#btnAdd").click(function(){ 
+        var member = $("#f").serialize(); 
+        $.ajax("insertMember", {data:member, success:function(data){     
+        	alert("등록완료");
+        	listMember(); 
+        }});         
+        
+    }); 
+
+    function listMember(){         
+        $("#tb").html("<tr><th>유저아디</th><th>유저비번</th><th>유저이름</th><th>권한</th></tr> "); 
+        $.getJSON("listMember",function(data){ 
+            arr = data; 
+            $.each(data, function(idx, b){ 
+                var tr = $("<tr></tr>").attr("idx", idx); 
+                $(tr).click(function(){ 
+                    $("tr").removeClass("active"); 
+                    $(this).addClass("active"); 
+
+                    var idx = $(this).attr("idx"); 
+                    var book = arr[idx]; 
+                    var i = 0; 
+                    $.each(member, function(key, value){                                             
+                        $(inputArr[i++]).val(value); 
+                    }); 
+                });                 
+
+                $.each(b, function(key, value){ 
+                    var td = $("<td></td>").html( value ); 
+                    $(tr).append(td); 
+                }); 
+                $("#tb").append(tr); 
+            }); 
+        });     
+    }//end function 
+
+    listMember(); 
+}); 
+
+</script> 
+</head> 
+<body> 
+    <table id="tb" border="1"> 
+        <tr> 
+            <th>유저아디</th> 
+            <th>유저이름</th> 
+            <th>권한</th>                
+        </tr> 
+    </table> 
+    <hr width="500px" align="left"> 
+    <form id="f"> 
+        유저아디 : <input type="text" id="id" name="id"><br>
+        유저비번 : <input type="text" id="pwd" name="pwd"><br> 
+        유저이름 : <input type="text" id="name" name="name"><br> 
+        유저권한 : <input type="text" id="role" name="role"><br>         
+    </form> 
+
+    <input type="button" value="등록" id="btnAdd"> 
+</body> 
+
+</html> 
