@@ -12,19 +12,51 @@
 				alert("가입되었습니다.");
 			}});
 		});
+		
+		$("#btnUpdate").click(function(){
+			var id = $("#id").val();
+			var pwd = $("#pwd").val();
+			var m1 ={id:id, pwd:pwd};
+			$.ajax("/all/updateMember", {data:m1, success:function(r){
+				alert(r);
+			}});
+		});
+		
 	});
 </script>
 </head>
 <body>
 	<h2>회원가입</h2>
 	<form id="f">
-		아이디 : <input type="text" name="id"><br>
-		암&nbsp&nbsp 호 : <input type="password" name="pwd"><br>
-		이&nbsp&nbsp 름 : <input type="text" name="name"><br>
-		나&nbsp&nbsp 이 : <input type="number" name="age"><br>
-		전&nbsp&nbsp 화 : <input type="text" name="tel"><br>
-		<input type="hidden" name="role" value="USER">
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id" id="id"></td>
+			</tr>
+			<tr>
+				<td>암호</td>
+				<td><input type="password" name="pwd" id="pwd"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td><input type="number" name="age"></td>
+			</tr>
+			<tr>
+				<td>전화</td>
+				<td><input type="text" name="tel"></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="role" value="USER"></td>
+			</tr>
+		</table>
 	</form>
 	<button id="btnOK">가입</button>
+	<button id="btnUpdate">수정</button>
+	<button id="btnDelete">탈퇴</button>
+	
 </body>
 </html>

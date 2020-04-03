@@ -16,14 +16,14 @@
   </insert>
   
   <update id="update">
-  	update member8 set pwd=#{pwd}, name=#{name}, age=#{age}, tel=#{tel} where id=#{id}
+  	update member8 set pwd=#{pwd}, name=#{name}, age=#{age}, tel=#{tel} where id=#{id} and pwd=#{pwd}
   </update>
   
   <delete id="delete">
-  	delete member8  where pwd=#{pwd}
+  	delete member8  where id=#{id} and pwd=#{pwd}
   </delete>
 
   <select id="getMember" resultType="memberVo">
-  	select * from member8 where id=#{id} 
+  	select * from member8 where id=#{id} and pwd=#{pwd}
   </select>
 </mapper>
