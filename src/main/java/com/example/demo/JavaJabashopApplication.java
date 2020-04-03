@@ -21,9 +21,10 @@ public class JavaJabashopApplication {
 	
 	public static void main(String[] args) {
 		
+		//테스트전 
 		DBManager.insertMember(new MemberVo("test", PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("1234"), "홍길동", 20, "02-1234-1234", "USER"));
 		
 		SpringApplication.run(JavaJabashopApplication.class, args);
 	}
-	
+	//브랜치 시밤
 }
