@@ -3,11 +3,45 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+	#insertGoodsDiv{
+		display: none;
+	}
+
+</style>
+<script type="text/javascript"
+	src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	var arr;
+	
+	$("#btnInsert").click(function(){
+		$("#insertDiv").css("display","block");
+		
+		$("btnInsertOk").click(function(){
+			var insertData = $("#insertForm").serialize();
+			$.ajax("/insertGoods",{data : insertData, success:function(){
+				alert(data);
+				window.location.href = "GoodsTest.html";
+			}});
+			
+		});
+	});
 	
 	
+	$.getJSON("/list", function(data){
+		arr = data;
+		
+		$.each(arr, function(idx , g){
+			 var tr = $("<tr></tr>"); 
+			 var td1 = $("<td></td>").html( g.no ); 
+             var td2 = $("<td></td>").html( g.item );
+             var td3 = $("<td></td>").html( g.qty);
+             $(tr).append(td1,td2,td3);
+             
+		});
+             $("#tb").append(tr); 
+	})
 });
 </script>
 </head>
@@ -16,20 +50,44 @@ $(function(){
 	<hr>
 	<div id="insertGoodsDiv">
 		<form id="#insertForm">
-		<table>
-			<tr>
-				<td></td>
-			</tr>
-		
-		</table>
-		
+			<table>
+				<tr>
+					<td>상품이름</td>
+					<td><input type="text" name="item" id="item"></td>
+				</tr>
+				<tr>
+					<td>상품수량</td>
+					<td><input type="number" name="qty" id="qty"></td>
+				</tr>
+				<tr>
+					<td>삼품가격</td>
+					<td><input type="number" name="price" id="price"></td>
+				</tr>
+				<tr>
+					<td>파일</td>
+					<td><input type="file" name="item" id="item"></td>
+				</tr>
+
+				<tr>
+					<td>상품설명</td>
+					<td><textarea rows="10" cols="80" name="detail" id="detail"></textarea>
+					</td>
+				</tr>
+
+			</table>
 		</form>
-	
-	
-	
-	
-	
-	
+			<button id="btnInsertOk" class="btn">등록</button>
 	</div>
+	
+	<div id="listdiv">
+		<table id="tb" border="1" width="80%">
+			<tr>
+				<th>상품번호</th>
+				<th>상품이름</th>
+				<th>상품가격</th>
+			</tr>
+		</table>
+	</div>
+	
 </body>
 </html>

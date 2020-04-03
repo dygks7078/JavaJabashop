@@ -23,8 +23,7 @@ public class GoodsController {
 		Gson gson = new Gson();
 		str = gson.toJson(list);
 		return str;
-	}
-	
+	}	
 	
 	@RequestMapping("/insertGoods")
 	public String insertEmp(GoodsVo g) {
@@ -37,6 +36,7 @@ public class GoodsController {
 		}
 		return str;
 	}
+	
 	@RequestMapping("/deleteGoods")
 	public String deleteGoods(GoodsVo g, HttpServletRequest request) {
 		String str = "ok";
