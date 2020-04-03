@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
+import com.example.demo.vo.MemberVo;
 
 public class DBManager {
 	private static SqlSessionFactory factory;
@@ -24,7 +24,30 @@ public class DBManager {
 		}
 	}
 	
+	public static MemberVo selectMember(String username){
+		SqlSession session = factory.openSession();
+		MemberVo m = session.selectOne("member.selectMember", username);
+		session.close();
+		return m;
+	}
 	
+	
+	public static int insertMember(MemberVo m) {
+		int re =  -1;
+		SqlSession session = factory.openSession();
+		re= session.insert("member.insert", m);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
+	
+	public static List<MemberVo> listAll(){
+		SqlSession session = factory.openSession();
+		List<MemberVo> list = session.selectList("member.selectAll");
+		session.close();
+		return list;
+	}
 	
 	
 //	
