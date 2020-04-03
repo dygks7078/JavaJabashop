@@ -9,7 +9,7 @@
   </select>
   
   <select id="selectAll" resultType="memberVo">
-  	select * from member 8
+  	select * from member8
   </select>
   <insert id="insert">
   	insert into member8 values(#{id}, #{pwd}, #{name}, #{age}, #{tel},#{role} )
