@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.example.demo.vo.GoodsVo;
 import com.example.demo.vo.MemberVo;
 
 public class DBManager {
@@ -24,14 +25,12 @@ public class DBManager {
 		}
 	}
 	
-<<<<<<< HEAD
 	public static MemberVo selectMember(String username){
 		SqlSession session = factory.openSession();
 		MemberVo m = session.selectOne("member.selectMember", username);
 		session.close();
 		return m;
 	}
-=======
 	public static int deleteGoods(GoodsVo g) {
 		int re = -1;
 		SqlSession session = factory.openSession(true);
@@ -48,7 +47,6 @@ public class DBManager {
 		return re;
 	}
 	
->>>>>>> branch 'master' of https://github.com/dygks7078/JavaJabashop.git
 	
 	
 	public static int insertMember(MemberVo m) {
