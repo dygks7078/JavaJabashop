@@ -55,6 +55,7 @@ public class GoodsController {
 		
 		DBManager.insertGoods(g);
 		
+		
 		return str;
 	}
 	

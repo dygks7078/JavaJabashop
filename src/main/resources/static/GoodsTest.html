@@ -34,6 +34,28 @@ $(function(){
 		})
 	})
 	
+	$("#btnDelete").click(function() {
+		var GoodsData = $("#insertForm").serialize();
+		$.ajax("/deleteGoods", {data : GoodsData, success : function(r) {
+			alert("삭제 성공");
+			window.location.href = "GoodsTest.html";
+			} 
+		});
+	});
+	
+	
+	$("#btnUpdate").click(function() {
+	     var GoodsData = $("#insertForm").serialize();
+	     $("#insertDiv").css("display","block");
+			$(".btnDiv").css("display","none");
+			$("#btnInsertOk").html("수정");
+	     $.ajax("/updateGoods", {data : GoodsData, success : function(r) {
+	    	 alert("수정 성공");
+			window.location.href = "GoodsTest.html";
+	        } 
+	     });
+	});   
+	
 	
 	$.getJSON("/list", function(data){
 		arr = data;
@@ -79,6 +101,7 @@ $(function(){
 					</td>
 				</tr>
 
+
 			</table>
 		</form>
 			<button id="btnInsertOk" class="btn">등록</button>
@@ -86,9 +109,12 @@ $(function(){
 	</div>
 	<div class="btnDiv">
 	<button id="btnInsert" class="btn">상품등록</button>
+	<button id="btnUpdate" class="btn">상품 수정</button>
+	<button id="btnDelete" class="btn">상품 삭제</button>
 	</div>
-	
 
+
+	<div id="listdiv">
 		<table id="tb" border="1">
 			<tr>
 				<th>상품번호</th>
