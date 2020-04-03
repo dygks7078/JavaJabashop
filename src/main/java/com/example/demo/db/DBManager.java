@@ -124,6 +124,13 @@ public class DBManager {
 		return list;
 	}
 	
+	public static GoodsVo getGoods(GoodsVo g) {
+		SqlSession session = factory.openSession();
+		GoodsVo gv =session.selectOne("goods.getGoods", g);
+		session.close();
+		return gv;
+	}
+	
 	//order
 	public static int order(OrderVo o) {
 		SqlSession session = factory.openSession();

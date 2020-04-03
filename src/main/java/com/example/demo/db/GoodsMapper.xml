@@ -17,9 +17,6 @@
 		insert into goods values(seq_goods.nextval, #{item}, #{price}, #{qty}, #{fname}, #{detail})
 	</insert>
 
-	<select id="detail" resultType="goodsVo">
-		select * from goods where no = #{no}
-	</select>
   
     <update id="updateGoods">
   	update goods set item=#{item},qty=#{qty},price=#{price},fname=#{fname},detail=#{detail} where no=#{no}
@@ -28,5 +25,9 @@
   <delete id="deleteGoods">
   	delete goods where no=#{no}
   </delete>
+  
+  <select id="getGoods" resultType="goodsVo">
+  select * from goods where no=#{no}
+  </select>
   
 </mapper>

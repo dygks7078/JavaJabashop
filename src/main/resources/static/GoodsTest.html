@@ -21,7 +21,7 @@ $(function(){
 		$(".btnDiv").css("display","none");
 		$("#btnInsertOk").click(function(){
 			var insertData = $("#insertForm").serialize();
-			$.ajax("/insertGoods",{data : insertData, success:function(){
+			$.ajax("/insertGoods",{data : insertData, success:function(data){
 				alert(data);
 				window.location.href = "GoodsTest.html";
 			}});
@@ -29,6 +29,8 @@ $(function(){
 		});
 		$("#btnInsertReset").click(function(){
 			$("#insertForm input").val("");
+			$("#insertForm textarea").val("");
+			
 		})
 	})
 	
@@ -42,9 +44,9 @@ $(function(){
              var td2 = $("<td></td>").html( g.item );
              var td3 = $("<td></td>").html( g.qty);
              $(tr).append(td1,td2,td3);
-             
-		});
              $("#tb").append(tr); 
+		});
+             
 	})
 });
 </script>
@@ -69,9 +71,8 @@ $(function(){
 				</tr>
 				<tr>
 					<td>파일</td>
-					<td><input type="file" name="item" id="item"></td>
+					<td><input type="file" name="uploadFile" id="uploadFile"></td>
 				</tr>
-
 				<tr>
 					<td>상품설명</td>
 					<td><textarea rows="10" cols="80" name="detail" id="detail"></textarea>
@@ -87,7 +88,7 @@ $(function(){
 	<button id="btnInsert" class="btn">상품등록</button>
 	</div>
 	
-	<div id="listdiv">
+
 		<table id="tb" border="1">
 			<tr>
 				<th>상품번호</th>
@@ -95,7 +96,6 @@ $(function(){
 				<th>상품가격</th>
 			</tr>
 		</table>
-	</div>
 	
 </body>
 </html>

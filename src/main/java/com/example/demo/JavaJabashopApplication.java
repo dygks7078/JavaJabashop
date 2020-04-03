@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 
 
@@ -15,8 +16,10 @@ public class JavaJabashopApplication {
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
-
-	
+	public CommonsMultipartResolver multipartResolver()
+	{
+		return new CommonsMultipartResolver();
+	}
 	
 	public static void main(String[] args) {
 		
