@@ -18,7 +18,7 @@ public class MemberController {
 	}
 
 	
-	@RequestMapping("/insertMember")
+	@RequestMapping("/all/insertMember")
 	public String insertMember(MemberVo m) {
 		String str="";
 		dao.insertMember(m);
