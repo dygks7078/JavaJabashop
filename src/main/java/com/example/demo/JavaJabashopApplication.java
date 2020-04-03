@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.demo.db.DBManager;
+import com.example.demo.vo.MemberVo;
+
 
 
 @SpringBootApplication
