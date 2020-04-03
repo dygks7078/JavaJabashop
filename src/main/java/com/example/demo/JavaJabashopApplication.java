@@ -9,5 +9,5 @@ public class JavaJabashopApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JavaJabashopApplication.class, args);
 	}
-
+	//수정
 }
