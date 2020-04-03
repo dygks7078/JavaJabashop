@@ -7,6 +7,11 @@
 	<select id="selectAll" resultType="goodsVo">
 	    select * from goods order by no
   	</select>
+  	
+  	<!-- 구매를 위한 수정 -->
+	<update id="orderGoods">
+		update goods set qty = qty - #{qty} where no = #{no}
+	</update>
 
 	<insert id="insert">
 		insert into goods values(seq_goods.nextval, #{item}, #{price}, #{qty}, #{fname}, #{detail})
