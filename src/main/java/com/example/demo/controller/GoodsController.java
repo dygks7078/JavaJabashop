@@ -37,7 +37,19 @@ public class GoodsController {
 		}
 		return str;
 	}
+	@RequestMapping("/deleteGoods")
+	public String deleteGoods(GoodsVo g, HttpServletRequest request) {
+		String str = "ok";
+		DBManager.deleteGoods(g);
+		return str;
+	}
 	
+	@RequestMapping("/updateGoods")
+	public String updateEmp(GoodsVo g, HttpServletRequest request) {
+		String str = "ok";
+		DBManager.updateGoods(g);
+		return str;
+	}
 	
 	
 }
