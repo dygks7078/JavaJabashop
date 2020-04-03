@@ -2,8 +2,6 @@ package com.example.demo.vo;
 
 public class OrderVo {
 
-<<<<<<< HEAD
-=======
 	private int order_id;
 	private String id;
 	private int no;
@@ -52,8 +50,6 @@ public class OrderVo {
 	}
 	public String getOrder_date() {
 		return order_date;
-	}
-	
-	
->>>>>>> refs/remotes/origin/영현
+	}	
+
 }
