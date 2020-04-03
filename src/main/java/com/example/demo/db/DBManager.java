@@ -31,6 +31,7 @@ public class DBManager {
 		session.close();
 		return m;
 	}
+
 	public static int deleteGoods(GoodsVo g) {
 		int re = -1;
 		SqlSession session = factory.openSession(true);
@@ -46,9 +47,7 @@ public class DBManager {
 		session.close();
 		return re;
 	}
-	
-	
-	
+
 	public static int insertMember(MemberVo m) {
 		int re =  -1;
 		SqlSession session = factory.openSession();
