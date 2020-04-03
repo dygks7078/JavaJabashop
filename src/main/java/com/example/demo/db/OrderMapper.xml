@@ -7,9 +7,9 @@
 	<select id="orderList" resultType="orderVo">
 	    select * from goods_order order by order_id
   	</select>
-
+  	
 	<insert id="insert">
-		insert into goods_order values(seq_order.nextval, #{id}, #{no}, #{order_qty}, #{order_date})
+		insert into goods_order values(seq_order.nextval, #{id}, #{no}, #{order_qty}, sysdate)
 	</insert>
   
 </mapper>

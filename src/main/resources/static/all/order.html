@@ -6,21 +6,37 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+		$("#btnOrder").click(function(){
+			var orderData = $("#orderForm").serialize();
+			
+			$.ajax("/all/order",{data: orderDate, success:function(data){
+				alert(data);
+			}})
+		})
 	})
 </script>
 </head>
 <body>
 	<h2>상품구매</h2>
 	<hr>
-	<div>
-		<form>
+	<div class="orderDiv">
+		<form id="orderForm">
 			<table>
 				<tr>
-					<td></td>
+					<td>구매고객</td>
+					<td><input type="text" name="id" placeholder="member8, id를 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>상품번호</td>
+					<td><input type="number" name="no" placeholder="goods, no를 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>구매수량</td>
+					<td><input type="number" name="qty" placeholder="qty를 입력하세요."></td>
 				</tr>
 			</table>
 		</form>
+		<button id="btnOrder">구매하기</button>
 	</div>
 </body>
 </html>
