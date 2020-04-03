@@ -89,6 +89,31 @@ public class DBManager {
 		return list;
 	}
 	
+	public static int deleteMember(MemberVo m) {
+		int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.delete("member.delete", m);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
+	public static int updateMember(MemberVo m) {
+		int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.update("member.update", m);
+		return re;
+	}
+	
+	
+	
+	public static MemberVo getMember(String id) {
+		MemberVo m = new MemberVo();
+		SqlSession session = factory.openSession();
+		m = session.selectOne("member.getMember",id);
+		session.close();
+		return m;
+	}
 	
 //	
 //	public static List<MemberVo> selectMemberAll(){
