@@ -21,7 +21,8 @@ public class JavaJabashopApplication {
 	public static void main(String[] args) {
 		
 		//DBManager.insertMember(new MemberVo("test", PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("1234"), "홍길동", 20, "02-1234-1234", "USER"));
-		
+		//DBManager.insertMember(new MemberVo("master", PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("1234"), "고길동", 22, "02-1234-1234", "ADMIN"));
+
 		SpringApplication.run(JavaJabashopApplication.class, args);
 	}
 	
