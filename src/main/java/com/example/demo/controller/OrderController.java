@@ -22,7 +22,6 @@ public class OrderController {
 	@GetMapping("/orderList")
 	public String orderList() {
 		
-		
 		return (new Gson()).toJson( DBManager.orderList() );
 	}
 }
