@@ -31,6 +31,31 @@ public class DBManager {
 		session.close();
 		return m;
 	}
+	
+	public static List<GoodsVo> listAllgs(){
+		SqlSession session = factory.openSession();
+		List<GoodsVo> list = session.selectList("goods.selectAll");
+		session.close();
+		return list;
+	}
+	
+	public static int insertGoods(GoodsVo g) {
+		int re =  -1;
+		SqlSession session = factory.openSession();
+		re= session.insert("goods.insert", g);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
+	public static GoodsVo getGoods(int no) {
+		
+		SqlSession session = factory.openSession();
+		GoodsVo g = session.selectOne("goods.detail", no);
+		session.close();
+		
+		return g;
+	}
 
 	public static int deleteGoods(GoodsVo g) {
 		int re = -1;
