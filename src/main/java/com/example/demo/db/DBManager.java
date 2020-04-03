@@ -24,12 +24,31 @@ public class DBManager {
 		}
 	}
 	
+<<<<<<< HEAD
 	public static MemberVo selectMember(String username){
 		SqlSession session = factory.openSession();
 		MemberVo m = session.selectOne("member.selectMember", username);
 		session.close();
 		return m;
 	}
+=======
+	public static int deleteGoods(GoodsVo g) {
+		int re = -1;
+		SqlSession session = factory.openSession(true);
+		re = session.delete("goods.deleteGoods", g);
+		session.close();
+		return re;
+	}
+	
+	public static int updateGoods(GoodsVo g) {
+		int re =  -1;
+		SqlSession session = factory.openSession(true);
+		re= session.update("goods.updateGoods",g);
+		session.close();
+		return re;
+	}
+	
+>>>>>>> branch 'master' of https://github.com/dygks7078/JavaJabashop.git
 	
 	
 	public static int insertMember(MemberVo m) {
