@@ -60,7 +60,7 @@ public class DBManager {
 
 	public static int deleteGoods(GoodsVo g) {
 		int re = -1;
-		SqlSession session = factory.openSession(true);
+		SqlSession session = factory.openSession();
 		re = session.delete("goods.deleteGoods", g);
 		session.close();
 		return re;
@@ -68,7 +68,7 @@ public class DBManager {
 	
 	public static int updateGoods(GoodsVo g) {
 		int re =  -1;
-		SqlSession session = factory.openSession(true);
+		SqlSession session = factory.openSession();
 		re= session.update("goods.updateGoods",g);
 		session.close();
 		return re;
