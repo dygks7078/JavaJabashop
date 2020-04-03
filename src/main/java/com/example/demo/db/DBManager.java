@@ -41,6 +41,7 @@ public class DBManager {
 		return list;
 	}
 	
+	
 	public static int insertGoods(GoodsVo g) {
 		int re =  -1;
 		SqlSession session = factory.openSession();
