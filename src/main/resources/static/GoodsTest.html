@@ -15,10 +15,11 @@
 $(function(){
 	var arr;
 	
+	
 	$("#btnInsert").click(function(){
-		$("#insertDiv").css("display","block");
-		
-		$("btnInsertOk").click(function(){
+		$("#insertGoodsDiv").css("display","block");
+		$(".btnDiv").css("display","none");
+		$("#btnInsertOk").click(function(){
 			var insertData = $("#insertForm").serialize();
 			$.ajax("/insertGoods",{data : insertData, success:function(){
 				alert(data);
@@ -26,7 +27,10 @@ $(function(){
 			}});
 			
 		});
-	});
+		$("#btnInsertReset").click(function(){
+			$("#insertForm input").val("");
+		})
+	})
 	
 	$("#btnDelete").click(function() {
 		var GoodsData = $("#insertForm").serialize();
@@ -71,7 +75,7 @@ $(function(){
 	<h2>상품목록</h2>
 	<hr>
 	<div id="insertGoodsDiv">
-		<form id="#insertForm">
+		<form id="insertForm">
 			<table>
 				<tr>
 					<td>상품이름</td>
@@ -99,13 +103,17 @@ $(function(){
 			</table>
 		</form>
 			<button id="btnInsertOk" class="btn">등록</button>
+			<button id="btnInsertReset" class="btn">취소</button>
+	</div>
+	<div class="btnDiv">
+	<button id="btnInsert" class="btn">상품등록</button>
 	</div>
 	<div class="btnDiv">
 		<button id="btnUpdate" class="btn">상품 수정</button>
 		<button id="btnDelete" class="btn">상품 삭제</button>
 	</div> 
 	<div id="listdiv">
-		<table id="tb" border="1" width="80%">
+		<table id="tb" border="1">
 			<tr>
 				<th>상품번호</th>
 				<th>상품이름</th>
