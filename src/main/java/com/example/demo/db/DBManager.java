@@ -24,6 +24,22 @@ public class DBManager {
 		}
 	}
 	
+	public static int deleteGoods(GoodsVo g) {
+		int re = -1;
+		SqlSession session = factory.openSession(true);
+		re = session.delete("goods.deleteGoods", g);
+		session.close();
+		return re;
+	}
+	
+	public static int updateGoods(GoodsVo g) {
+		int re =  -1;
+		SqlSession session = factory.openSession(true);
+		re= session.update("goods.updateGoods",g);
+		session.close();
+		return re;
+	}
+	
 	
 	
 	
