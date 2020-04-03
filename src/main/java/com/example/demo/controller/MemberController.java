@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,8 @@ public class MemberController {
 	@RequestMapping("/all/insertMember")
 	public String insertMember(MemberVo m) {
 		String str="";
+		String pwd = m.getPwd();
+		m.setPwd(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(pwd));
 		dao.insertMember(m);
 		return str;
 	}
