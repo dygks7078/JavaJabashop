@@ -33,6 +33,7 @@ public class DBManager {
 		return m;
 	}
 	
+	
 	public static List<GoodsVo> listAllgs(){
 		SqlSession session = factory.openSession();
 		List<GoodsVo> list = session.selectList("goods.selectAll");
