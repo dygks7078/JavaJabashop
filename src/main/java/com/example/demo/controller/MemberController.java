@@ -29,7 +29,7 @@ public class MemberController {
 		return str;
 	}
 	
-	@RequestMapping(value = "/listMember", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/all/listMember", produces = "application/json;charset=UTF-8")
 	public String listMember() {
 		String str = "";
 		List<MemberVo> list = DBManager.listAll();

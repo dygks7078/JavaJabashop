@@ -26,8 +26,8 @@ $(function(){
     }); 
 
     function listMember(){         
-        $("#tb").html("<tr><th>유저아디</th><th>유저비번</th><th>유저이름</th><th>권한</th></tr> "); 
-        $.getJSON("listMember",function(data){ 
+        $("#tb").html("<tr><th>유저아디</th><th>유저비번</th><th>유저이름</th><th>나이</th><th>전번</th><th>권한</th></tr> "); 
+        $.getJSON("/all/listMember",function(data){ 
             arr = data; 
             $.each(data, function(idx, b){ 
                 var tr = $("<tr></tr>").attr("idx", idx); 
