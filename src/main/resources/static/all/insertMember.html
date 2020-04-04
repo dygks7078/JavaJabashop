@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$("#btnInsert").click(function(){
+			var m = $("#f").serialize();
+			$.ajax("/all/insertMember", {data:m, success:function(r){
+				alert("가입되었습니다.");
+				
+				window.location.href="상품페이지로 이동?";
+			}});
+		});
+		
+		// 회원 상세정보로 이동
+		$("#btnDetail").click(function(){
+			window.location.href="detailMember.html";
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<h2 id="h2">회원가입</h2>
+		<form id="f">
+		<table id="tb">
+			<tr id="trId">
+				<td>아이디</td>
+				<td><input type="text" name="id" id="id" placeholder="아이디를 입력하세요"></td>
+			</tr>
+			<tr id="trPwd">
+				<td>암호</td>
+				<td><input type="password" name="pwd" id="pwd" placeholder="암호를 입력하세요"></td>
+			</tr>
+			<tr id="trName">
+				<td>이름</td>
+				<td><input type="text" name="name" placeholder="이름을 입력하세요"></td>
+			</tr>
+			<tr id="trAge">
+				<td>나이</td> 
+				<td><input type="number" name="age" placeholder="나이를 입력하세요"></td>
+			</tr>
+			<tr id="trTel">
+				<td>전화</td>
+				<td><input type="text" name="tel" placeholder="010-1234-5678"></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="role" value="USER"></td>
+			</tr>
+		</table>
+	</form>
+	<br>	
+	<button id="btnInsert">가입</button>
+	<button id="btnDetail">마이페이지</button>
+</body>
+</html>

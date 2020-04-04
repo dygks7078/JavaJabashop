@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var id = location.search.substring(location.search.indexOf("=")+1);
+		
+		$.ajax("/all/detail", {data:{id:id}, success:function(m){
+			//alert(mu);
+			$("#id").val(m.id);
+			$("#pwd").val(m.pwd);
+			$("#name").val(m.name);
+			$("#age").val(m.age);
+			$("#tel").val(m.tel);
+		}});
+		
+		$("#btU").click(function(){
+			var f = $("#f").serialize();
+			$.ajax("/all/updateMember",{data:f, success:function(data){
+				alert("회원 정보 수정 성공!!");
+			}});
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>회원 수정</h2>
+	<form id="f">
+		<table id="tb">
+			<tr id="trId">
+				<td>아이디</td>
+				<td><input type="text" name="id" id="id" readonly="readonly"></td>
+			</tr>
+			<tr id="trPwd">
+				<td>암호</td>
+				<td><input type="password" name="pwd" id="pwd"></td>
+			</tr>
+			<tr id="trName">
+				<td>이름</td>
+				<td><input type="text" name="name" id="name"></td>
+			</tr>
+			<tr id="trAge">
+				<td>나이</td> 
+				<td><input type="number" name="age" id="age"></td>
+			</tr>
+			<tr id="trTel">
+				<td>전화</td>
+				<td><input type="text" name="tel" id="tel"></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="role"></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<button id="btU">수정</button>
+	<button id="btU">취소</button>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$("#detail").hide();
+		
+		$("#btnOk").click(function(){
+			 var f = $("#f").serialize();
+			 $.ajax("/all/detail",{data:f, success:function(m){
+				 //alert(data);
+				 $("#detail").show();
+				 $("#ok").hide();
+				 
+				$("#idok").html(m.id);
+				$("#pwdok").html(m.pwd);
+				$("#name").html(m.name);
+				$("#age").html(m.age);
+				$("#tel").html(m.tel);	
+				
+				// 수정으로 이동
+				$("#btnUpdate").click(function(){
+					window.location.href = "updateMember.html?id="+m.id;
+				});
+				
+				// 탈퇴로 이동
+				$("#btnDelete").click(function(){
+					window.location.href = "deleteMember.html?id="+m.id;
+				});
+			 }});
+		});
+	})
+</script>
+</head>
+<body>
+	<h2>회원 상세정보</h2>
+	<div id="ok">
+		<form id="f">
+			<table id="tb">
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" id="id"></td>
+				</tr>
+				<tr>
+					<td>암호</td>
+					<td><input type="password" name="pwd" id="pwd"></td>
+				</tr>
+			</table>
+		</form>
+		<button id="btnOk">확인</button>
+	</div>
+	
+	<div id="detail">
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td id="idok"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td id="pwdok"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td id="name"></td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td id="age"></td>
+			</tr>
+			<tr>
+				<td>전화</td>
+				<td id="tel"></td>
+			</tr>
+		</table>
+		<br>
+		<button id="btnUpdate">수정</button>
+		<button id="btnDelete">탈퇴</button>
+	</div>
+</body>
+</html>
