@@ -103,6 +103,8 @@ public class DBManager {
 		int re = -1;
 		SqlSession session = factory.openSession();
 		re = session.update("member.update", m);
+		session.commit();
+		session.close();
 		return re;
 	}
 	

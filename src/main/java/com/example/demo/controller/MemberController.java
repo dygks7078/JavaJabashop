@@ -1,11 +1,6 @@
 package com.example.demo.controller;
 
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +19,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/all/updateMember")
-	public String updateMember(String id, String pwd) {
+	public String updateMember(MemberVo m) {
 		String str ="";
-		MemberVo m = new MemberVo();
-		
-		
-		
+		dao.updateMember(m);
 //		if(id.equals(m.getId()) &&  pwd.equals(m.getPwd())) {
 //			dao.updateMember(m);
 //		}

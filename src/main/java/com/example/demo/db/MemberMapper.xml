@@ -12,7 +12,7 @@
   	select * from member8
   </select>
   <insert id="insert">
-  	insert into member8 values(#{id}, #{pwd}, #{name}, #{age}, #{tel},#{role} )
+  	insert into member8 values(#{id}, #{pwd}, #{name}, #{age}, #{tel},#{role})
   </insert>
   
   <update id="update">
@@ -20,7 +20,7 @@
   </update>
   
   <delete id="delete">
-  	delete member8  where id=#{id} and pwd=#{pwd}
+  	delete member8  where id=#{id}
   </delete>
 
   <select id="getMember" resultType="memberVo">
