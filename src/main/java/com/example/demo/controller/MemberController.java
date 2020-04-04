@@ -20,6 +20,13 @@ public class MemberController {
 		this.dao = dao;
 	}
 	
+	@RequestMapping("/all/deleteMember")
+	public String deleteMember(MemberVo m) {
+		String str ="";
+		dao.deleteMember(m);
+		return str;
+	}
+	
 	@RequestMapping("/all/updateMember")
 	public String updateMember(MemberVo m) {
 		String str ="";

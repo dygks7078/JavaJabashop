@@ -27,10 +27,15 @@
 					window.location.href = "updateMember.html?id="+m.id;
 				});
 				
-				// 탈퇴로 이동
+				// 회원 탈퇴
 				$("#btnDelete").click(function(){
-					window.location.href = "deleteMember.html?id="+m.id;
+					var f = $("#f").serialize();
+					$.ajax("/all/deleteMember",{data:f, success:function(m){
+						alert("회원 탈퇴 완료");
+						window.location.href="memberTest.html";
+					}});
 				});
+				
 			 }});
 		});
 	})

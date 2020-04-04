@@ -9,21 +9,27 @@
 		
 		var id = location.search.substring(location.search.indexOf("=")+1);
 		
-		$.ajax("/all/detail", {data:{id:id}, success:function(m){
-			//alert(mu);
-			$("#id").val(m.id);
-			$("#pwd").val(m.pwd);
-			$("#name").val(m.name);
-			$("#age").val(m.age);
-			$("#tel").val(m.tel);
-		}});
+		function detailInfo(){
+			$.ajax("/all/detail", {data:{id:id}, success:function(m){
+				//alert(mu);
+				$("#id").val(m.id);
+				$("#pwd").val(m.pwd);
+				$("#name").val(m.name);
+				$("#age").val(m.age);
+				$("#tel").val(m.tel);
+			}});
+		}
 		
-		$("#btU").click(function(){
+		detailInfo();
+		
+		$("#btnUpdate").click(function(){
 			var f = $("#f").serialize();
-			$.ajax("/all/updateMember",{data:f, success:function(data){
+			$.ajax("/all/updateMember",{data:f, success:function(m){
 				alert("회원 정보 수정 성공!!");
+				window.location.href="memberTest.html";
 			}});
 		});
+		
 	});
 </script>
 </head>
@@ -57,7 +63,7 @@
 		</table>
 	</form>
 	<br>
-	<button id="btU">수정</button>
-	<button id="btU">취소</button>
+	<button id="btnUpdate">수정</button>
+	<button id="btnReset">취소</button>
 </body>
 </html>
