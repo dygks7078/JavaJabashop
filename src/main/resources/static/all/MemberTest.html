@@ -6,6 +6,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
 		$("#btnOK").click(function(){
 			var m = $("#f").serialize();
 			$.ajax("/all/insertMember", {data:m, success:function(r){
@@ -14,38 +15,51 @@
 		});
 		
 		$("#btnUpdate").click(function(){
-			var id = $("#id").val();
-			var pwd = $("#pwd").val();
-			var m1 ={id:id, pwd:pwd};
-			$.ajax("/all/updateMember", {data:m1, success:function(r){
-				alert(r);
-			}});
-		});
+						
+			var h2 = $("#h2").html("회원 수정");
+			$("#trId").show();
+			$("#trPwd").show();
+			$("#trName").hide();
+			$("#trAge").hide();
+			$("#trTel").hide();
+
+ 		});
+		
+		$("#btnDelete").click(function(){
+			
+			var h2 = $("#h2").html("회원 탈퇴");
+			$("#trId").show();
+			$("#trPwd").show();
+			$("#trName").hide();
+			$("#trAge").hide();
+			$("#trTel").hide();
+
+ 		});
 		
 	});
 </script>
 </head>
 <body>
-	<h2>회원가입</h2>
+	<h2 id="h2">회원가입</h2>
 	<form id="f">
-		<table>
-			<tr>
+		<table id="tb">
+			<tr id="trId">
 				<td>아이디</td>
 				<td><input type="text" name="id" id="id"></td>
 			</tr>
-			<tr>
+			<tr id="trPwd">
 				<td>암호</td>
 				<td><input type="password" name="pwd" id="pwd"></td>
 			</tr>
-			<tr>
+			<tr id="trName">
 				<td>이름</td>
 				<td><input type="text" name="name"></td>
 			</tr>
-			<tr>
+			<tr id="trAge">
 				<td>나이</td>
 				<td><input type="number" name="age"></td>
 			</tr>
-			<tr>
+			<tr id="trTel">
 				<td>전화</td>
 				<td><input type="text" name="tel"></td>
 			</tr>
@@ -54,9 +68,11 @@
 			</tr>
 		</table>
 	</form>
+	<br>	
 	<button id="btnOK">가입</button>
 	<button id="btnUpdate">수정</button>
 	<button id="btnDelete">탈퇴</button>
+	
 	
 </body>
 </html>

@@ -27,13 +27,13 @@ public class MemberController {
 	@RequestMapping("/all/updateMember")
 	public String updateMember(MemberVo m) {
 		String str ="수정 완료";
-		String m1 = m.getPwd();
-		System.out.println(m1);
-		MemberVo mv = new MemberVo();
-		String v = mv.getPwd();
-		System.out.println(v);
-		dao.updateMember(m);
-		System.out.println(str);
+//		String m1 = m.getPwd();
+//		System.out.println(m1);
+//		MemberVo mv = new MemberVo();
+//		String v = mv.getPwd();
+//		System.out.println(v);
+//		dao.updateMember(m);
+//		System.out.println(str);
 		return str;
 	}
 	
