@@ -108,12 +108,11 @@ public class DBManager {
 	
 	
 	
-	public static MemberVo getMember(String id) {
-		MemberVo m = new MemberVo();
+	public static MemberVo getMember(MemberVo m) {
 		SqlSession session = factory.openSession();
-		m = session.selectOne("member.getMember",id);
+		MemberVo mv = session.selectOne("member.getMember",m);
 		session.close();
-		return m;
+		return mv;
 	}
 	
 	//show orderList

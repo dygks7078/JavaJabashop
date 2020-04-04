@@ -14,8 +14,8 @@ public class MemberDao {
 		return DBManager.selectMember(username);
 	}
 	
-	public MemberVo getMember(String id) {
-		return DBManager.getMember(id);
+	public MemberVo getMember(MemberVo m) {
+		return DBManager.getMember(m);
 	}
 	
 	public int deleteMember(MemberVo m) {

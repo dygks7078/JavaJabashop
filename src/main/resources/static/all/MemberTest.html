@@ -7,32 +7,53 @@
 <script type="text/javascript">
 	$(function(){
 		
-		$("#btnOK").click(function(){
+		$("#buttonMemu").hide();
+		
+		function showInfo(){
+			$("#trId").show();
+			$("#trPwd").show();
+			$("#trName").hide();
+			$("#trAge").hide();
+			$("#trTel").hide();
+		}
+		
+		// 회원 가입
+		$("#btnInsert").click(function(){
 			var m = $("#f").serialize();
 			$.ajax("/all/insertMember", {data:m, success:function(r){
 				alert("가입되었습니다.");
 			}});
 		});
+			
+	 	// 회원 상세정보 및 수정
+		$("#btnDetail").click(function(){
+			/* var h2 = $("#h2").html("회원 상세정보");
+			showInfo();
+			var m = $("#f").serialize(); */
+			$.ajax("/all/detail", {success:function(data){
+				//$("#btnInsert").show();
+				alert(data);
+			}});
+		}); 
 		
-		$("#btnUpdate").click(function(){
+		/* $("#btnUpdate").click(function(){
 						
 			var h2 = $("#h2").html("회원 수정");
-			$("#trId").show();
-			$("#trPwd").show();
-			$("#trName").hide();
-			$("#trAge").hide();
-			$("#trTel").hide();
-
- 		});
+			showInfo();
+			var m = $("#f").serialize();
+			
+			$("#btnUpdate").click(function(){
+				$.ajax("/all/updateMember",{data:m, success:function(r){
+					alert(r);
+				}});
+			});
+			
+ 		}); */
 		
 		$("#btnDelete").click(function(){
 			
 			var h2 = $("#h2").html("회원 탈퇴");
-			$("#trId").show();
-			$("#trPwd").show();
-			$("#trName").hide();
-			$("#trAge").hide();
-			$("#trTel").hide();
+			showInfo();
 
  		});
 		
@@ -41,27 +62,28 @@
 </head>
 <body>
 	<h2 id="h2">회원가입</h2>
-	<form id="f">
+	<div id="insertMember">
+		<form id="f">
 		<table id="tb">
 			<tr id="trId">
 				<td>아이디</td>
-				<td><input type="text" name="id" id="id"></td>
+				<td><input type="text" name="id" id="id" placeholder="아이디를 입력하세요"></td>
 			</tr>
 			<tr id="trPwd">
 				<td>암호</td>
-				<td><input type="password" name="pwd" id="pwd"></td>
+				<td><input type="password" name="pwd" id="pwd" placeholder="암호를 입력하세요"></td>
 			</tr>
 			<tr id="trName">
 				<td>이름</td>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="name" placeholder="이름을 입력하세요"></td>
 			</tr>
 			<tr id="trAge">
-				<td>나이</td>
-				<td><input type="number" name="age"></td>
+				<td>나이</td> 
+				<td><input type="number" name="age" placeholder="나이를 입력하세요"></td>
 			</tr>
 			<tr id="trTel">
 				<td>전화</td>
-				<td><input type="text" name="tel"></td>
+				<td><input type="text" name="tel" placeholder="010-1234-5678"></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="role" value="USER"></td>
@@ -69,10 +91,14 @@
 		</table>
 	</form>
 	<br>	
-	<button id="btnOK">가입</button>
-	<button id="btnUpdate">수정</button>
-	<button id="btnDelete">탈퇴</button>
+	<button id="btnInsert">가입</button>
+	<button id="btnDetail">회원정보</button>
+	</div>
 	
+	<div id="buttonMemu">
+		<button id="btnUpdate">수정</button>
+		<button id="btnDelete">탈퇴</button>
+	</div>
 	
 </body>
 </html>
