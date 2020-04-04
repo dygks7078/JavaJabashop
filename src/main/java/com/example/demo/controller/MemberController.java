@@ -22,17 +22,6 @@ public class MemberController {
 	public String updateMember(MemberVo m) {
 		String str ="";
 		dao.updateMember(m);
-//		if(id.equals(m.getId()) &&  pwd.equals(m.getPwd())) {
-//			dao.updateMember(m);
-//		}
-//		String m1 = m.getPwd();
-//		System.out.println(m1);
-//		MemberVo mv = new MemberVo();
-//		String v = mv.getPwd();
-//		System.out.println(v);
-//		dao.updateMember(m);
-//		System.out.println(str);
-		
 		return str;
 	}
 	
