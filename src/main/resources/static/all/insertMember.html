@@ -21,6 +21,10 @@
 			window.location.href="detailMember.html";
 		});
 		
+		$("#btnReset").click(function(){
+			$("#f input").val("");
+		});
+		
 	});
 </script>
 </head>
@@ -55,6 +59,7 @@
 	</form>
 	<br>	
 	<button id="btnInsert">가입</button>
+	<button id="btnReset">취소</button>
 	<button id="btnDetail">마이페이지</button>
 </body>
 </html>

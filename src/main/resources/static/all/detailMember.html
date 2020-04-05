@@ -9,19 +9,24 @@
 		
 		$("#detail").hide();
 		
+		$("#btnReset").click(function(){
+			window.location.href="memberTest.html";
+		});
+		
 		$("#btnOk").click(function(){
 			 var f = $("#f").serialize();
+			 
 			 $.ajax("/all/detail",{data:f, success:function(m){
 				 //alert(data);
 				 $("#detail").show();
 				 $("#ok").hide();
-				 
+				
 				$("#idok").html(m.id);
 				$("#pwdok").html(m.pwd);
 				$("#name").html(m.name);
 				$("#age").html(m.age);
-				$("#tel").html(m.tel);	
-				
+				$("#tel").html(m.tel);
+				 
 				// 수정으로 이동
 				$("#btnUpdate").click(function(){
 					window.location.href = "updateMember.html?id="+m.id;
@@ -57,6 +62,7 @@
 			</table>
 		</form>
 		<button id="btnOk">확인</button>
+		<button id="btnReset">취소</button>
 	</div>
 	
 	<div id="detail">
