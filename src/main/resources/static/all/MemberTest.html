@@ -3,22 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+  background: #fff;
+  font-size: 62.5%;
+}
+
+.wrap{
+	padding: 2em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -150px;
+	text-align: center;
+	}
+
+/* GENERAL BUTTON STYLING */
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+button {
+  background: none;
+  border: 3px solid #489CFF;
+  border-radius: 5px;
+  color: #489CFF;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 2em 6em;
+  position: relative;
+  text-transform: uppercase;
+}
+
+button::before,
+button::after {
+  background: #489CFF;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: #fff;
+}
+
+/* 회원가입 */
+.join::after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.join:hover:after {
+  height: 100%;
+}
+
+/* 마이페이지 */
+.my::after {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 0;
+}
+
+.my:hover:after {
+  width: 100%;
+}
+</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		
-		$("#join").click(function(){
+		$(".join").click(function(){
 			window.location.href="insertMember.html";
 		});
 		
-		$("#my").click(function(){
+		$(".my").click(function(){
 			window.location.href="detailMember.html";
 		});
 	})
 </script>
 </head>
 <body>
-	<button id="join">회원 가입</button>
-	<button id="my">마이페이지</button>
+	<div class="wrap">
+		<button class="join">회원 가입</button>
+		<button class="my">마이페이지</button>
+	</div>
+	
 </body>
 </html>
